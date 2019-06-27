@@ -11,6 +11,10 @@ class Category(models.Model):
         """String for representing the Model object."""
         return self.name
 
+    def get_absolute_url(self):
+        """Returns the url to access a particular author instance."""
+        return reverse('category-detail', args=[str(self.id)])
+
     class Meta:
         verbose_name_plural = 'categories'
 
@@ -23,7 +27,6 @@ class Book(models.Model):
     add_date = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, help_text='Select a category for this book')
 
-
     class Meta:
         ordering = ['-add_date']
 
@@ -34,3 +37,9 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
+
+    def display_category(self):
+        """Create a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join(category.name for category in self.category.all()[:3])
+    
+    display_category.short_description = 'Category'

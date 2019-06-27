@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Recently added books</h2>
+    {% if book_list %}
+        {% for book in book_list %}
+            <a href="{{ book.url_address }}">{{ book.title }}</a> by {{book.author}}
+            <p>{{book.description}}</p>
+            <p>Added: {{book.add_date}} Category: <a href='{{ book.category.all|join:"," }}'>{{ book.category.all|join:", "}}</a></p>
+        {% endfor %}
+    {% else %}
+        <p>There are no books in the library.</p>
+    {% endif %}   
+{% endblock %}

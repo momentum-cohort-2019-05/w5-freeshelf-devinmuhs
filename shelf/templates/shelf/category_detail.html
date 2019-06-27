@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Category: {{ category.name }}</h1>
+
+    <h2>Book</h2>
+    {% for book in category.book_set.all %}
+    <p><a href="{{ book.url_address }}">{{ book }}</a> by {{ book.author }}<p>
+    {{book.description}}
+    <p>Added: {{ book.add_date }}</p>
+  {% endfor %}
+      <hr>
+{% endblock %}
