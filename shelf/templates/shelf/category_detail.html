@@ -1,14 +1,14 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h2>Category: {{ category.name }}</h1>
+  <div class='catdetail'>
+  <h2 class="catname">Category: {{ category.name }}</h1>
 
-    <h2>Book</h2>
+    <h2 class='bookhead'>Book</h2>
     {% for book in category.book_set.all %}
-    <p><a href="{{ book.url_address }}">{{ book }}</a> by {{ book.author }}<p>
-    {{book.description}}
+    <p class="booktitle"><a href="{{ book.url_address }}">{{ book }}</a> by {{ book.author }}<p>
+    <p class="bookdesc">{{book.description}}</p>
     <p>Added: {{ book.add_date }}</p>
   {% endfor %}
-      <hr>
-
+</div>
 {% endblock %}

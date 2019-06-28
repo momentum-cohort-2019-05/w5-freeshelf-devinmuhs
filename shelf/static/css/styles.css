@@ -5,17 +5,88 @@
     font-family: DejaVu Sans Mono, monospace;
 }
 
-body {
-    background-color: brown;
-}
 .topnav{
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    padding-left: 30px;   
-    background-color: blue;
+    padding-top: 10px; 
+    height: 50px; 
+    font-size: 25px;
+    background-color: gray;
+    color: white;
 }
 
-.topnav li {
+.topnav li{
     display: inline;
+    padding-left: 30px; 
+    padding-right: 30px;
+}
+
+.topnav li a{
+    color: white;
+    text-decoration: none;
+}
+
+
+body {
+
+}
+
+.catnav{
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 0;  
+    padding-top: 15px; 
+    height: 40px; 
+    font-size: 20px; 
+    padding-left: 30px; 
+    padding-right: 30px;
+}
+
+.catnav li {
+    display: inline;
+}
+
+.catnav li a{
+    display: inline;
+}
+
+.recentbooks {
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding-left: 30px; 
+    padding-right: 30px;
+}
+
+.booklist {
+    margin-bottom: 30px;
+    padding-left: 30px; 
+    padding-right: 30px;
+}
+
+.booktitle {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.bookdesc {
+    margin-bottom: 15px;
+}
+
+.booksby {
+    font-weight: bold;
+}
+
+.catdetail {
+    padding-left: 30px; 
+    padding-right: 30px;
+}
+
+.catname {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.bookhead {
+    font-size: 20px;
+    margin-bottom: 15px;
 }
