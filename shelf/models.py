@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.urls import reverse # Used to generate URLs by reversing the URL patterns
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     """Model representing a book category."""
@@ -26,7 +27,6 @@ class Book(models.Model):
     url_address = models.URLField(max_length=200, unique=True, help_text='Enter the url for this book')
     add_date = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, help_text='Select a category for this book')
-
     class Meta:
         ordering = ['-add_date']
 
@@ -36,10 +36,14 @@ class Book(models.Model):
     
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
-        return reverse('book-detail', args=[str(self.id)])
+        return self.url_address
 
     def display_category(self):
         """Create a string for the Genre. This is required to display genre in Admin."""
         return ', '.join(category.name for category in self.category.all()[:3])
     
     display_category.short_description = 'Category'
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, unique=False, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, unique=False, on_delete=models.CASCADE)

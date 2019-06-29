@@ -15,29 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
-
 # Use include() to add paths from the catalog application 
 from django.urls import include
 from django.urls import path
+#Add URL maps to redirect the base URL to our application
+from django.views.generic import RedirectView
+# Use static() to add url mapping to serve static files during development (only)
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf.urls import url
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    url('accounts/', include('registration.backends.default.urls')),
+]
+
+
 
 urlpatterns += [
     path('shelf/', include('shelf.urls')),
 ]
 
-#Add URL maps to redirect the base URL to our application
-from django.views.generic import RedirectView
+
 urlpatterns += [
     path('', RedirectView.as_view(url='/shelf/', permanent=True)),
-    path('accounts/', include('registration.backends.default.urls')),
-]
 
-# Use static() to add url mapping to serve static files during development (only)
-from django.conf import settings
-from django.conf.urls.static import static
+]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% block title %}<title>Freeshelf</title>{% endblock %}
+    <!-- {% block title %}<title>Freeshelf</title>{% endblock %} -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
@@ -12,8 +12,18 @@
         <div class="nav-wrapper">
             <div class="topnav">
                 {% block topnav %}
-                <ul>
-                    <li><a href="{% url 'index' %}">Freeshelf</a></li>
+                <ul class="navbar_flex">
+                    <div class="nav_name">
+                        <li><a href="{% url 'index' %}">Freeshelf</a></li>
+                    </div>
+                    <div class="nav_links">
+                        {% if request.user.is_authenticated %}
+                        Logged in as {{ request.user }} | <li><a href="{% url 'user-favorites' %}">Favorites</a></li> | <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'auth_login' %}">Login |</a></li>
+                        <li><a href="{% url 'registration_register' %}">Register</a></li>
+                        {% endif %}
+                    </div>
                 </ul>
                 {% endblock %}
             </div>

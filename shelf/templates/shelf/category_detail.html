@@ -1,10 +1,10 @@
-{% extends "base_generic.html" %}
+{% extends "base.html" %}
 
 {% block content %}
   <div class='catdetail'>
   <h2 class="catname">Category: {{ category.name }}</h1>
 
-    <h2 class='bookhead'>Book</h2>
+    <h2 class='bookhead'>Books</h2>
     {% for book in category.book_set.all %}
     <p class="booktitle"><a href="{{ book.url_address }}">{{ book }}</a> by {{ book.author }}<p>
     <p class="bookdesc">{{book.description}}</p>

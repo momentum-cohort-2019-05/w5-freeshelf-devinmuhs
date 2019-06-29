@@ -1,4 +1,4 @@
-{% extends "base_generic.html" %}
+{% extends "base.html" %}
 
 {% block content %}
   <h2 class="recentbooks">Recently added books</h2>
@@ -8,6 +8,7 @@
             <div class="booktitle"><a href="{{ book.url_address }}">{{ book.title }}</a> by {{book.author}} </div>
             <p class="bookdesc">{{book.description}}</p>
             <p>Added: {{book.add_date}} Category: <a href='{{ book.category.all|join:"," }}'>{{ book.category.all|join:", "}}</a></p>
+            <p><a href= "{% url 'favorites' book.pk %}">Add to favorites</a></p>
         </div>
         {% endfor %}
     {% else %}

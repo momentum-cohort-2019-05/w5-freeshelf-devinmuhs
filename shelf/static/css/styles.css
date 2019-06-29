@@ -10,15 +10,15 @@
     margin: 0;
     padding-top: 10px; 
     height: 50px; 
-    font-size: 25px;
+    font-size: 20px;
     background-color: gray;
     color: white;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .topnav li{
     display: inline;
-    padding-left: 30px; 
-    padding-right: 30px;
 }
 
 .topnav li a{
@@ -36,7 +36,7 @@ body {
     margin-bottom: 20px;
     padding: 0;  
     padding-top: 15px; 
-    height: 40px; 
+    height: auto; 
     font-size: 20px; 
     padding-left: 30px; 
     padding-right: 30px;
@@ -89,4 +89,9 @@ body {
 .bookhead {
     font-size: 20px;
     margin-bottom: 15px;
+}
+
+.navbar_flex {
+    display: flex;
+    justify-content: space-between;
 }
