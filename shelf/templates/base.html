@@ -14,26 +14,19 @@
                 {% block topnav %}
                 <ul class="navbar_flex">
                     <div class="nav_name">
-                        <li><a href="{% url 'index' %}">Freeshelf</a></li>
+                        <!-- <li><a href="{% url 'index' %}">Freeshelf</a></li> -->
+                        <li><a class="icon" href="{% url 'index' %}">
+                                <img  src=https://www.dhcl.michlibrary.org/images/open-book-icon-white.png/@@images/image.png height="30" width="30">
+                              </a></li>
                     </div>
                     <div class="nav_links">
                         {% if request.user.is_authenticated %}
-                        Logged in as {{ request.user }} | <li><a href="{% url 'user-favorites' %}">Favorites</a></li> | <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                        {{ request.user }} | <li><a href="{% url 'user-favorites' %}">Favorites</a></li> | <li><a href="{% url 'auth_logout' %}">Logout</a></li>
                         {% else %}
                         <li><a href="{% url 'auth_login' %}">Login |</a></li>
                         <li><a href="{% url 'registration_register' %}">Register</a></li>
                         {% endif %}
                     </div>
-                </ul>
-                {% endblock %}
-            </div>
-            <div class="catnav">
-                {% block catnav %}
-                <ul>
-                    <li class="booksby">Books by category:</li>
-                    {% for category in category_list %}
-                    <li><a href='{{ category.get_absolute_url }}'>{{ category.name }}</a></li>
-                    {% endfor %}
                 </ul>
                 {% endblock %}
             </div>

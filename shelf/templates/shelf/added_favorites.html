@@ -2,8 +2,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="yourfavs">
     {% if favorites %}
-    <p>Your favorite books:</p>
+    <p >Your favorite books:</p>
         <ul>
         {% for book in favorites_list %}
             <li>
@@ -15,4 +16,5 @@
     {% else %}
         <p>You haven't added any books to your favorites yet!</p>
     {% endif %}
+    </div>
 {% endblock %}

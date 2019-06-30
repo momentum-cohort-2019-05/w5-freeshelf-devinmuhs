@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="catnav">
+        {% block catnav %}
+        <ul>
+            <li class="booksby">Books by category:</li>
+            {% for category in category_list %}
+            <li><a href='{{ category.get_absolute_url }}'>{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+    </div>
   <h2 class="recentbooks">Recently added books</h2>
     {% if book_list %}
         {% for book in book_list %}
         <div class="booklist">
             <div class="booktitle"><a href="{{ book.url_address }}">{{ book.title }}</a> by {{book.author}} </div>
             <p class="bookdesc">{{book.description}}</p>
-            <p>Added: {{book.add_date}} Category: <a href='{{ book.category.all|join:"," }}'>{{ book.category.all|join:", "}}</a></p>
-            <p><a href= "{% url 'favorites' book.pk %}">Add to favorites</a></p>
+            <p class="added">Added: {{book.add_date}} Category: {{ book.category.all|join:", "}}</a></p>
+            <p><a  href= "{% url 'favorites' book.pk %}">Add to favorites</a></p>
         </div>
         {% endfor %}
     {% else %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="faveadded">
     {% if new_favorite %}
         {% if created %}
             <p>Book successfuly added to favorites.</p>
@@ -12,4 +13,5 @@
             <p><a href="{% url 'user-favorites' %}">Go to your favorites </a> | <a href="{{ book.get_absolute_url }}"> Back to book</a></p>
         {% endif %}    
     {% endif %}
+    </div>
 {% endblock %}
